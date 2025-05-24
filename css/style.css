@@ -1,10 +1,13 @@
 body {
-  font-family: "Montserrat", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
   font-size: 15px;
   letter-spacing: .05em;
   color: #333;
 }
-
+:root {
+  --main-color:#4a90e2;
+  ;
+}
 a {
   transition: opacity .3s;
   text-decoration: none;
@@ -53,13 +56,17 @@ img {
  見出し
 ---------------------------------*/
 .title {
-  font-size: 34px;
+  font-size: 36px;
   font-weight: bold;
   line-height: 1;
   margin-bottom: 40px;
   text-align: center;
   letter-spacing: .05em;
-  color: #333;
+
+
+  background-color: #94acd9;
+  padding : 10px ;
+  border-radius:10px;
 }
 
 .lead {
@@ -158,6 +165,17 @@ img {
   line-height: 1.2;
   margin-bottom: 5px;
   letter-spacing: .1em;
+
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.0s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .mv-subtitle {
@@ -190,7 +208,9 @@ img {
 }
 
 .works-item:hover {
-  opacity: .9;
+  transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 .works-item:nth-of-type(3n) {
@@ -228,6 +248,10 @@ img {
   justify-content: space-between;
   width: 48%;
   margin-bottom: 50px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.0s forwards;
+  animation-delay: 0.2s;
 }
 
 .skill-img {
@@ -447,7 +471,10 @@ img {
 
   /*  メインビジュアル */
   .mv {
-    height: 75vh;
+
+
+    
+      color: #655858;
   }
 
   .mv-container {
@@ -545,6 +572,7 @@ img {
     font-size: 16px;
     padding-left: .8em;
   }
+
 
   .article-body h3:not(:first-child) {
     margin-top: 30px;
