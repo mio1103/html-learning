@@ -4,10 +4,12 @@ body {
   letter-spacing: .05em;
   color: #333;
 }
+
 :root {
-  --main-color:#4a90e2;
+  --main-color: #4a90e2;
   ;
 }
+
 a {
   transition: opacity .3s;
   text-decoration: none;
@@ -65,8 +67,8 @@ img {
 
 
   background-color: #94acd9;
-  padding : 10px ;
-  border-radius:10px;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .lead {
@@ -209,8 +211,8 @@ img {
 
 .works-item:hover {
   transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .works-item:nth-of-type(3n) {
@@ -473,8 +475,8 @@ img {
   .mv {
 
 
-    
-      color: #655858;
+
+    color: #655858;
   }
 
   .mv-container {
@@ -514,6 +516,11 @@ img {
     margin-bottom: 30px;
   }
 
+  .works-item:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
+
   /* Skill */
   .skill-list {
     display: block;
@@ -523,6 +530,11 @@ img {
   .skill-item {
     width: 100%;
     margin-bottom: 35px;
+  }
+
+  .skill-item:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
   }
 
   .skill-item:last-child {
@@ -583,4 +595,10 @@ img {
     line-height: 1.7;
     margin-bottom: 20px;
   }
-}
+
+  .button:hover {
+    background: linear-gradient(135deg, #1ca9e3, #4dd0e1);
+    color: #fff;
+    transition: 0.3s;
+
+  }
