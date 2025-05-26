@@ -595,10 +595,4 @@ img {
     line-height: 1.7;
     margin-bottom: 20px;
   }
-
-  .button:hover {
-    background: linear-gradient(135deg, #1ca9e3, #4dd0e1);
-    color: #fff;
-    transition: 0.3s;
-
-  }
+}
