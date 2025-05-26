@@ -1,6 +1,6 @@
 :root {
-  --main-bg: #1a1a2e;
-  --main-text: #7d7d7e;
+  --main-bg: #1b1b30;
+  --main-text: #dedede;
   --accent: #0f4c81;
 }
 
@@ -9,7 +9,7 @@ body {
   font-size: 15px;
   letter-spacing: .05em;
   color: #333;
-  background-color: var(--main-bg);
+  background-color: var(--main-bg) !important;
   color : var(--main-text);
   accent-color: var(--accent);
 
@@ -73,7 +73,7 @@ img {
   letter-spacing: .05em;
 
 
-  background-color: #94acd9;
+  background-color: #191c30;
   padding: 10px;
   border-radius: 10px;
 }
@@ -490,7 +490,7 @@ img {
 
 
 
-    color: #655858;
+    color: #c3c3c3;
   }
 
   .mv-container {
