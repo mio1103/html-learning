@@ -1,14 +1,21 @@
+:root {
+  --main-bg: #1a1a2e;
+  --main-text: #7d7d7e;
+  --accent: #0f4c81;
+}
+
 body {
   font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
   font-size: 15px;
   letter-spacing: .05em;
   color: #333;
+  background-color: var(--main-bg);
+  color : var(--main-text);
+  accent-color: var(--accent);
+
 }
 
-:root {
-  --main-color: #4a90e2;
-  ;
-}
+
 
 a {
   transition: opacity .3s;
@@ -469,6 +476,13 @@ img {
 
   .gnav-item a:after {
     display: none;
+  }
+
+  .gnav-item a:hover {
+    background-color: #222;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px 10px;
   }
 
   /*  メインビジュアル */
