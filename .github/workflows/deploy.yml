@@ -17,6 +17,6 @@ jobs:
       - name: Upload to Pages
         uses: actions/upload-pages-artifact@v1
         with:
-          path: .       # ルート直下の HTML/CSS/img をそのまま公開
+          path: docs       # ルート直下の HTML/CSS/img をそのまま公開
       - name: Deploy
         uses: actions/deploy-pages@v1
