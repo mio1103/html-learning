@@ -4,19 +4,24 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 0         # full history for Jekyll-free deploy
-      - name: Setup Pages
+          fetch-depth: 0
+
+      - name: Configure Pages
         uses: actions/configure-pages@v3
-      - name: Upload to Pages
+
+      - name: Upload artifact for Pages
         uses: actions/upload-pages-artifact@v1
         with:
-          path: docs       # ルート直下の HTML/CSS/img をそのまま公開
-      - name: Deploy
+          path: docs
+
+      - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v1
