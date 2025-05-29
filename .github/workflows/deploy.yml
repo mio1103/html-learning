@@ -19,6 +19,7 @@ jobs:
         uses: actions/configure-pages@v3
 
       - name: Upload artifact for Pages
+        # ← ここを upload-artifact ではなく、upload-pages-artifact に
         uses: actions/upload-pages-artifact@v1
         with:
           path: docs
