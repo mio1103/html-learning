@@ -10,7 +10,7 @@ body {
   letter-spacing: .05em;
   color: #333;
   background-color: var(--main-bg) !important;
-  color : var(--main-text);
+  color: var(--main-text);
   accent-color: var(--accent);
 
 }
@@ -59,6 +59,38 @@ img {
   max-width: 1340px;
   margin: 0 auto;
   padding: 0 40px;
+}
+
+.card {
+  transition: transform 0.2s ease;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 16px;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+  width: 100%;
+}
+
+.card-body {
+  padding: 12px;
+}
+
+.card-body h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
 }
 
 /*--------------------------------
