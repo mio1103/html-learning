@@ -45,6 +45,7 @@
 
       <!-- mv -->
       <div class="mv">
+        <div class="code-background"></div>
         <div class="mv-container">
 
           <p class="mv-title">FUMIO UMEDA</p>
@@ -67,9 +68,9 @@
               <p class="works-name">My Portfolio</p>
               <p class="works-info">Design / Coding(Responsive)</p>
             </a>
-            <a class="works-item" href="works-template.html">
-              <div class="works-img"><img src="img/works-dummy-thumb.jpg" alt="" /></div>
-              <p class="works-name">作品名が入る</p>
+            <a class="works-item" href="work1.html">
+              <div class="works-img"><img src="img/work1.png" alt="" /></div>
+              <p class="works-name">Cafeのwebページ</p>
               <p class="works-info">Design / Coding(Responsive) / WordPress</p>
             </a>
             <a class="works-item" href="works-template.html">
@@ -176,6 +177,28 @@
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script type='text/javascript' src="js/script.js"></script>
+  <script>
+    // 流したいコードテキスト（例）
+    const codeBlock = `
+    const hello = () => {
+      console.log("Hello, world!");
+    };
+    
+    function add(a, b) {
+      return a + b;
+    }
+    
+    const result = add(2, 3);
+    console.log(result);
+    
+    // You can add more lines of code here...
+    `;
+
+    // codeBlock を複数回繰り返して背景全体を埋める
+    const repeatCount = 20;  // 20回繰り返す (お好みで変更可)
+    const bgElement = document.querySelector('.code-background');
+    bgElement.text
+  </script>
 </body>
 
 </html>

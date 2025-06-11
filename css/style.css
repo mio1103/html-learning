@@ -93,6 +93,7 @@ img {
   font-size: 20px;
 }
 
+
 /*--------------------------------
  見出し
 ---------------------------------*/
@@ -189,14 +190,33 @@ img {
  メインビジュアル
 ---------------------------------*/
 .mv {
+  position: relative;
+  height: 85vh;
+  /* もともとの高さをキープ */
+  /* 背景を真っ黒寄りに */
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 85vh;
   text-align: center;
 }
 
+.code-background {
+  position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-family: monospace;
+    color: rgb(255, 252, 252);
+    white-space: pre-wrap;
+    padding: 2rem;
+    animation: scroll-code 20s linear infinite;
+}
+
 .mv-container {
+  position: relative;
+  z-index: 2;
   padding: 0 40px;
 }
 
@@ -210,6 +230,44 @@ img {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 1.0s forwards;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.mv-text {
+  font-size: 1rem;
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+@keyframes scroll-code {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .code-background {
+    display: none;
+  }
+
+  .mv-title {
+    font-size: 2rem;
+  }
+
+  .mv-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .mv-text {
+    font-size: 0.9rem;
+  }
 }
 
 @keyframes fadeInUp {
@@ -220,11 +278,10 @@ img {
 }
 
 .mv-subtitle {
-  font-size: 20px;
-  font-weight: bold;
-  line-height: 1;
-  margin-bottom: 40px;
-  letter-spacing: .08em;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #ccc;
+  margin-bottom: 1rem;
 }
 
 .mv-text {

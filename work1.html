@@ -1,14 +1,421 @@
-<section class="portfolio">
-  <h2>作品紹介</h2>
-  <div class="gallery">
-    <div class="item">
-      <img src="work1.jpg" alt="作品1の説明">
-      <p>作品1の簡単な説明。</p>
-    </div>
-    <div class="item">
-      <img src="work2.jpg" alt="作品2の説明">
-      <p>作品2の簡単な説明。</p>
-    </div>
-    <!-- 他の作品も同様に追加 -->
-  </div>
-</section>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Luna - 心地よい時間をお過ごしください</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* ヘッダー */
+        header {
+            background: #2c1810;
+            color: #fff;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-scrolled {
+            background: rgba(44, 24, 16, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #d4af37;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #d4af37;
+        }
+
+        /* ヒーローセクション */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23c8986b" width="1200" height="800"/><path fill="%23d4af37" d="M0 400h1200v400H0z" opacity="0.3"/><circle fill="%23fff" cx="600" cy="300" r="50" opacity="0.1"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #d4af37;
+            color: #fff;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #b8941f;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        /* セクション共通 */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c1810;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #d4af37;
+            margin: 1rem auto;
+        }
+
+        /* About セクション */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            height: 300px;
+            background: linear-gradient(45deg, #c8986b, #d4af37);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2rem;
+        }
+
+        /* メニューセクション */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-item h3 {
+            color: #2c1810;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            color: #d4af37;
+            font-weight: bold;
+        }
+
+        /* コンタクトセクション */
+        .contact {
+            background: #f8f5f0;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info h3 {
+            color: #2c1810;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        .hours {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* フッター */
+        footer {
+            background: #2c1810;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* アニメーション */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            section {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header id="header">
+        <nav>
+            <div class="logo">Cafe Luna</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Cafe Luna</h1>
+            <p>心地よい時間をお過ごしください</p>
+            <a href="#menu" class="btn">メニューを見る</a>
+        </div>
+    </section>
+
+    <!-- Aboutセクション -->
+    <section id="about" class="about fade-in">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Cafe Lunaは、心地よい空間でゆったりとした時間をお過ごしいただけるカフェです。厳選されたコーヒー豆と、手作りの焼き菓子で、皆様に癒しのひとときを提供いたします。</p>
+                <p>月の光のように、やわらかく温かい雰囲気の中で、日常の喧騒から離れて、大切な人とのひとときや、一人の時間を大切にしていただけたらと思います。</p>
+            </div>
+            <div class="about-image">
+                <p>温かい雰囲気の店内</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- メニューセクション -->
+    <section id="menu" class="menu fade-in">
+        <h2 class="section-title">Menu</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <h3>ブレンドコーヒー <span class="price">¥450</span></h3>
+                <p>当店自慢のオリジナルブレンド。深いコクと程よい酸味が特徴です。</p>
+            </div>
+            <div class="menu-item">
+                <h3>カフェラテ <span class="price">¥520</span></h3>
+                <p>なめらかなミルクとエスプレッソの絶妙なバランスをお楽しみください。</p>
+            </div>
+            <div class="menu-item">
+                <h3>手作りチーズケーキ <span class="price">¥380</span></h3>
+                <p>濃厚でクリーミーな味わいが人気の手作りチーズケーキです。</p>
+            </div>
+            <div class="menu-item">
+                <h3>季節のタルト <span class="price">¥420</span></h3>
+                <p>旬のフルーツを使った季節限定のタルトをご用意しております。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- コンタクトセクション -->
+    <section id="contact" class="contact fade-in">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>アクセス</h3>
+                <p>〒123-4567</p>
+                <p>東京都◯◯区◯◯町1-2-3</p>
+                <p>TEL: 03-1234-5678</p>
+                <p>最寄り駅より徒歩5分</p>
+            </div>
+            <div class="hours">
+                <h3>営業時間</h3>
+                <p><strong>月〜金:</strong> 8:00 - 20:00</p>
+                <p><strong>土日祝:</strong> 9:00 - 21:00</p>
+                <p><strong>定休日:</strong> 毎週火曜日</p>
+                <p style="margin-top: 1rem; color: #d4af37;">※ラストオーダーは閉店30分前</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <p>&copy; 2025 Cafe Luna. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // ヘッダーのスクロール効果
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = 80;
+                    const targetPosition = target.offsetTop - headerHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // フェードインアニメーション
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // メニューアイテムのホバー効果強化
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.boxShadow = '0 10px 25px rgba(212, 175, 55, 0.2)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+            });
+        });
+    </script>
+</body>
+</html>
