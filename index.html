@@ -73,21 +73,17 @@
               <p class="works-name">Cafeのwebページ</p>
               <p class="works-info">Design / Coding(Responsive) / WordPress</p>
             </a>
-            <a class="works-item" href="works-template.html">
+            <a class="works-item" href="work2.html">
               <div class="works-img"><img src="img/works-dummy-thumb.jpg" alt="" /></div>
-              <p class="works-name">作品名が入る</p>
+              <p class="works-name">コーポレートのwebページ</p>
               <p class="works-info">Design</p>
             </a>
-            <a class="works-item" href="works-template.html">
+            <a class="works-item" href="work3.html">
               <div class="works-img"><img src="img/works-dummy-thumb.jpg" alt="" /></div>
-              <p class="works-name">作品名が入る</p>
+              <p class="works-name">美容院のwebページ</p>
               <p class="works-info">Banner Design</p>
             </a>
-            <a class="works-item" href="works-template.html">
-              <div class="works-img"><img src="img/works-dummy-thumb.jpg" alt="" /></div>
-              <p class="works-name">作品名が入る</p>
-              <p class="works-info">Banner Design</p>
-            </a>
+
           </div>
         </div>
 
@@ -197,7 +193,13 @@
     // codeBlock を複数回繰り返して背景全体を埋める
     const repeatCount = 20;  // 20回繰り返す (お好みで変更可)
     const bgElement = document.querySelector('.code-background');
-    bgElement.text
+    if (bgElement) {
+      let codes = '';
+      for (let i = 0; i < repeatCount; i++) {
+        codes += `<pre>${codeBlock}</pre>`;
+      }
+      bgElement.innerHTML = codes;
+    }
   </script>
 </body>
 
