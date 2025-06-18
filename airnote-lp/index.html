@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AirNote Mini - まるで紙。だけどデジタル。</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .header-logo {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    /* Main Visual */
+    .hero-section {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+
+    .hero-catchcopy {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 40px;
+      animation: fadeInUp 1s ease-out 0.4s both;
+    }
+
+    .product-image {
+      width: 600px;
+      height: 400px;
+      background-image: url('imges.png');
+      background-size: cover;
+      background-position: center;
+      border-radius: 20px;
+      margin: 40px auto;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    /* Problem Section */
+    .problem-section {
+      background: white;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 50px;
+      color: #333;
+    }
+
+    .problem-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .problem-item {
+      background: #fff5f5;
+      border-left: 5px solid #f56565;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .problem-item:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Features Section */
+    .features-section {
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      padding: 80px 20px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      margin-top: 50px;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .feature-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    /* Use Cases Section */
+    .usecases-section {
+      background: white;
+      padding: 80px 20px;
+    }
+
+    .usecases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      margin-top: 50px;
+    }
+
+    .usecase-card {
+      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .usecase-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .usecase-title {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    /* Reviews Section */
+    .reviews-section {
+      background: #f8f9fa;
+      padding: 80px 20px;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .review-card {
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+
+    .review-card::before {
+      content: '"';
+      font-size: 4rem;
+      color: #667eea;
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      opacity: 0.3;
+    }
+
+    .review-text {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .review-author {
+      text-align: right;
+      color: #666;
+      font-weight: bold;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      background: white;
+      padding: 80px 20px;
+    }
+
+    .faq-item {
+      background: #f8f9fa;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .faq-question {
+      background: #667eea;
+      color: white;
+      padding: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .faq-question:hover {
+      background: #5a67d8;
+    }
+
+    .faq-answer {
+      padding: 20px;
+      background: white;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .cta-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+
+    .cta-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 40px;
+      opacity: 0.9;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: white;
+      padding: 20px 60px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 50px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .price-info {
+      margin-top: 30px;
+      font-size: 1.2rem;
+    }
+
+    .price {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ffd700;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    /* Sticky Purchase Button */
+    .sticky-cta {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      opacity: 0;
+      transform: translateY(100px);
+      transition: all 0.3s ease;
+    }
+
+    .sticky-cta.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .sticky-button {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: white;
+      padding: 15px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: pulse 2s infinite;
+    }
+
+    .sticky-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Inline CTA Buttons */
+    .inline-cta {
+      text-align: center;
+      margin: 50px 0;
+    }
+
+    .inline-cta-button {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 15px 40px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .inline-cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+
+      .hero-catchcopy {
+        font-size: 1.5rem;
+      }
+
+      .product-image {
+        width: 300px;
+        height: 200px;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .features-grid,
+      .usecases-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-logo">GADGET STORE</div>
+      <div>革新的なガジェットをお届け</div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">AirNote Mini</h1>
+        <p class="hero-subtitle">軽くて持ち歩ける、スマートメモパッド</p>
+
+        <div class="product-image">
+          <img
+            src="imges.png" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;" alt="AirNote Mini">
+        </div>
+        <p style="font-size: 1.3rem; opacity: 0.9; margin-bottom: 30px;">小さくて、軽くて、あなたの思考を逃がさない。</p>
+        <a href="#" class="cta-button" onclick="handlePurchase()">🛒 今すぐ購入する</a>
+      </div>
+    </div>
+
+
+  </section>
+
+  <!-- Problem Section -->
+  <section class="problem-section">
+    <div class="container">
+      <h2 class="section-title">こんなお悩み、ありませんか？</h2>
+      <div class="problem-list">
+        <div class="problem-item">
+          <h3>📝 ノートにメモしても、あとで見返すのが面倒...</h3>
+          <p>大切なアイデアやメモを書いても、どこに書いたか忘れてしまったり、整理するのが大変。</p>
+        </div>
+        <div class="problem-item">
+          <h3>📱 スマホでメモを取っても、書き心地がイマイチ...</h3>
+          <p>デジタルは便利だけど、やっぱり手書きの感覚が恋しい。思考の流れをそのまま表現したい。</p>
+        </div>
+        <div class="problem-item">
+          <h3>🎒 荷物は増やしたくないけど、アイデアは残したい...</h3>
+          <p>ノートを持ち歩くのは重いし、かさばる。でも大切なひらめきを逃したくない。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section">
+    <div class="container">
+      <h2 class="section-title" style="text-align: center; color: #333;">AirNote Miniの魅力</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⚖️</div>
+          <h3 class="feature-title">重さわずか120g、薄さ5mm</h3>
+          <p>スマートフォンよりも軽く、薄い超軽量設計。カバンに入れても全く負担になりません。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">✍️</div>
+          <h3 class="feature-title">紙のような書き心地</h3>
+          <p>E-Ink技術により、まるで紙に書いているような自然な感覚を実現。ストレスフリーな書き心地。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔄</div>
+          <h3 class="feature-title">即座にスマホ転送</h3>
+          <p>Bluetooth接続で書いたメモを瞬時にスマートフォンに転送。自動でクラウド保存も可能。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔋</div>
+          <h3 class="feature-title">2週間の長時間バッテリー</h3>
+          <p>1回の充電で約2週間使用可能。急な会議やアイデアタイムでも電池切れの心配なし。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases Section -->
+  <section class="usecases-section">
+    <div class="container">
+      <h2 class="section-title" style="text-align: center;">こんなシーンで活躍</h2>
+      <div class="usecases-grid">
+        <div class="usecase-card">
+          <div class="usecase-icon">📚</div>
+          <h3 class="usecase-title">大学生の講義メモに</h3>
+          <p>重い教科書に加えてノートを持ち歩く必要なし。講義内容をサッと書いて、後でデジタル整理。</p>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-icon">💼</div>
+          <h3 class="usecase-title">ビジネスのアイデア管理に</h3>
+          <p>会議中のメモや突然のひらめきを逃さずキャッチ。チームとの共有もスムーズに。</p>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-icon">✈️</div>
+          <h3 class="usecase-title">旅行中のスケッチ帳として</h3>
+          <p>旅先での感動や風景を手軽にスケッチ。思い出をデジタルで永続保存できます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section class="reviews-section">
+    <div class="container">
+      <h2 class="section-title" style="text-align: center;">お客様の声</h2>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <p class="review-text">紙と同じように書けるのに、デジタルで管理できるのが最高！授業のノートがすっきり整理できるようになりました。</p>
+          <p class="review-author">— 20代・女性 大学生</p>
+        </div>
+        <div class="review-card">
+          <p class="review-text">商談中のメモがそのまま共有できて、仕事が効率的に。クライアントも「スマートですね」と好評です。</p>
+          <p class="review-author">— 30代・男性 営業職</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <div class="container">
+      <h2 class="section-title" style="text-align: center;">よくあるご質問</h2>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Q. メモはPDFで保存できますか？
+        </div>
+        <div class="faq-answer" style="display: none;">
+          はい。クラウドに自動保存され、PDF形式での出力が可能です。また、JPEG形式での保存にも対応しています。
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Q. ペンは付属していますか？
+        </div>
+        <div class="faq-answer" style="display: none;">
+          はい。専用スタイラスが1本付属しております。紛失時の予備ペンも別途販売しています。
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Q. 防水機能はありますか？
+        </div>
+        <div class="faq-answer" style="display: none;">
+          IP54相当の防水・防塵性能を備えており、多少の水滴や埃には対応できます。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="cta-title">あなたの「ひらめき」、逃さない。</h2>
+      <p class="cta-subtitle">今すぐAirNote Miniで、メモの常識を変えよう。</p>
+      <div class="price-info">
+        <div class="price">¥24,980</div>
+        <div>送料無料・1年保証付き</div>
+      </div>
+      <a href="#" class="cta-button" onclick="handlePurchase()">🛒 今すぐ購入する</a>
+    </div>
+  </section>
+
+  <!-- Sticky Purchase Button -->
+  <div class="sticky-cta" id="stickyButton">
+    <a href="#" class="sticky-button" onclick="handlePurchase()">
+      🛒 購入する
+    </a>
+  </div>
+
+  <script>
+    function toggleFaq(element) {
+      const answer = element.nextElementSibling;
+      const isVisible = answer.style.display === 'block';
+
+      // Close all other FAQ items
+      document.querySelectorAll('.faq-answer').forEach(item => {
+        item.style.display = 'none';
+      });
+
+      // Toggle current item
+      answer.style.display = isVisible ? 'none' : 'block';
+    }
+
+    function handlePurchase() {
+      alert('ありがとうございます！実際の購入画面では、カート追加や決済処理が行われます。');
+    }
+
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all cards and sections
+    document.querySelectorAll('.feature-card, .usecase-card, .review-card, .problem-item').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+
+    // Sticky button visibility control
+    const stickyButton = document.getElementById('stickyButton');
+    const heroSection = document.querySelector('.hero-section');
+
+    const stickyObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          stickyButton.classList.remove('visible');
+        } else {
+          stickyButton.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    if (heroSection) {
+      stickyObserver.observe(heroSection);
+    }
+  </script>
+</body>
+
+</html>
